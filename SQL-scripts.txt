@@ -1,0 +1,107 @@
+Sample
+
+-- This query does a table JOIN between the imaging (PhotoObj) and spectra
+-- (SpecObj) tables and includes the necessary columns in the SELECT to upload
+-- the results to the SAS (Science Archive Server) for FITS file retrieval.
+SELECT TOP 500
+   p.objid,p.ra,p.dec,p.u,p.g,p.r,p.i,p.z,
+   p.run, p.rerun, p.camcol, p.field,
+   s.specobjid, s.class, s.z as redshift,
+   s.plate, s.mjd, s.fiberid
+FROM PhotoObj AS p
+   JOIN SpecObj AS s ON s.bestobjid = p.objid
+WHERE 
+   s.z BETWEEN 0.1 AND 0.2
+ AND (p.g - p.r) > 0.6 
+ AND (p.g - p.r) < 0.8 
+ AND (p.type = 3)
+
+
+Tests
+
+SELECT TOP 50 
+p.run,p.rerun,p.camCol,p.field,p.obj 
+FROM ..PhotoObj AS p 
+JOIN dbo.fGetNearbyObjEq(10,0.2,5.0) AS b ON  b.objID = P.objID 
+WHERE  (p.g - p.r) > 0.6 AND (p.g - p.r) < 0.8 AND ( p.type = 3)
+
+
+SELECT TOP 100
+   p.objid,p.ra,p.dec,p.u,p.g,p.r,p.i,p.z,
+   p.run, p.rerun, p.camcol, p.field,
+   s.specobjid, s.class, s.z as redshift,
+   s.plate, s.mjd, s.fiberid
+FROM PhotoObj AS p
+   JOIN SpecObj AS s ON s.bestobjid = p.objid
+WHERE 
+   s.z BETWEEN 0.2 AND 0.3
+ AND (p.g - p.r) > 0.6 
+ AND I(p.g - p.r) < 0.8 
+ AND (p.type = 3)
+ AND (s.class = "GALAXY")
+
+
+
+
+
+Select galaxies from Coma Cluster (Gavazzi et al. 2010), with color constraints
+
+SELECT
+   p.objid,p.ra,p.dec,p.u,p.g,p.r,p.i,p.z,
+   p.run, p.rerun, p.camcol, p.field,
+   s.specobjid, s.class, s.z as redshift,
+   s.plate, s.mjd, s.fiberid
+FROM PhotoObj AS p
+   JOIN SpecObj AS s ON s.bestobjid = p.objid
+WHERE 
+   s.z BETWEEN 0.01333 AND 0.0316666
+ AND p.ra BETWEEN 172.5 AND 202.5 
+ AND p.dec BETWEEN 18 AND 32
+ AND (s.class = "GALAXY")
+
+
+
+SELECT  p.objid,p.ra,p.dec,p.ModelMag_u,p.ModelMag_g,p.ModelMag_r,p.ModelMag_i,p.ModelMag_z,
+   p.run, p.rerun, p.camcol, p.field,
+   s.specobjid, s.class, s.z as redshift,
+   s.plate, s.mjd, s.fiberid
+FROM PhotoObj AS p
+   JOIN SpecObj AS s ON s.bestobjid = p.objid
+WHERE 
+   s.z BETWEEN 0.01333 AND 0.0316666
+ AND p.ra BETWEEN 172.5 AND 202.5 
+ AND p.dec BETWEEN 18 AND 32
+ AND (p.ModelMag_g - p.ModelMag_r) > 0.6 
+ AND (p.ModelMag_g - p.ModelMag_r) < 0.8 
+ AND (s.class = "GALAXY")
+
+
+SELECT  p.objid,p.ra,p.dec,p.ModelMag_u,p.ModelMag_g,p.ModelMag_r,p.ModelMag_i,p.ModelMag_z,
+   p.run, p.rerun, p.camcol, p.field,
+   s.specobjid, s.class, s.z as redshift,
+   s.plate, s.mjd, s.fiberid
+FROM PhotoObj AS p
+   JOIN SpecObj AS s ON s.bestobjid = p.objid
+WHERE 
+   s.z BETWEEN 0.01333 AND 0.0316666
+ AND p.ra BETWEEN 172.5 AND 202.5 
+ AND p.dec BETWEEN 18 AND 32
+ AND (p.ModelMag_g - p.ModelMag_r) < 0.6 
+ AND (s.class = "GALAXY")
+
+
+
+SELECT  p.objid,p.ra,p.dec,p.ModelMag_u,p.ModelMag_g,p.ModelMag_r,p.ModelMag_i,p.ModelMag_z,
+   p.run, p.rerun, p.camcol, p.field,
+   s.specobjid, s.class, s.z as redshift,
+   s.plate, s.mjd, s.fiberid
+FROM PhotoObj AS p
+   JOIN SpecObj AS s ON s.bestobjid = p.objid
+WHERE 
+   s.z BETWEEN 0.01333 AND 0.0316666
+ AND p.ra BETWEEN 172.5 AND 202.5 
+ AND p.dec BETWEEN 18 AND 32
+ AND (s.class = "GALAXY")
+
+
+ 
