@@ -1,0 +1,169 @@
+z=0.35
+
+SELECT las.sourceID, las.ra, las.dec, dr5.objid, dr5.ra, dr5.dec, dr5.modelMag_u, dr5.modelMag_g, dr5.modelMag_r, dr5.psfMag_r, dr5.modelMag_i, dr5.modelMag_z, las.yAperMag3, las.yAperMag3Err, las.j_1AperMag3, las.j_1AperMag3Err, las.kAperMag3, las.kAperMag3Err, las.hAperMag3, las.hAperMag3Err, las.pStar,dr5.petroRad_r
+FROM lasSource AS las, BestDR5..PhotoObj AS dr5, lasSourceXDR5PhotoObj AS x, lasMergeLog AS lm
+WHERE masterObjID=las.sourceID AND slaveObjID=dr5.ObjID AND x.distanceMins<0.016667 
+AND (las.ra > 105.0 AND las.ra < 225.0)
+AND las.pStar >= 0.0
+AND las.hApermag3 <=16.2
+AND las.frameSetID = lm.frameSetID AND j_1mfID > 0 AND hmfID > 0 AND kmfID > 0
+AND las.yAperMag3 > 0.0 AND las.j_1AperMag3 > 0.0 AND las.kAperMag3 > 0.0 AND las.hAperMag3 > 0.0
+AND ((dr5.psfMag_u-0.927) - (dr5.psfMag_g+0.103)) BETWEEN 1.21 AND 1.61
+AND ((dr5.psfMag_g+0.103) - (dr5.psfMag_r-0.146)) BETWEEN 1.8 AND 2.2
+AND ((dr5.psfMag_r-0.146) - (dr5.psfMag_i-0.366)) BETWEEN 0.66 AND 1.06
+AND ((dr5.psfMag_i-0.366) - (dr5.psfMag_z-0.533)) BETWEEN 0.24 AND 0.64
+AND (las.yAperMag3 - las.j_1AperMag3) BETWEEN 0.435 AND 0.835
+AND (las.j_1AperMag3 - las.hAperMag3) BETWEEN 0.45 AND 0.95
+AND (las.hAperMag3 - las.kAperMag3) BETWEEN 0.59 AND 0.99
+AND (dr5.psfMag_r - dr5.modelMag_r) BETWEEN 0.0 AND 0.3
+AND dr5.petroRad_r < 1.5
+
+
+
+
+
+
+
+
+
+z=0.4
+
+SELECT las.sourceID, las.ra, las.dec, dr5.objid, dr5.ra, dr5.dec, dr5.modelMag_u, dr5.modelMag_g, dr5.modelMag_r, dr5.psfMag_r, dr5.modelMag_i, dr5.modelMag_z, las.yAperMag3, las.yAperMag3Err, las.j_1AperMag3, las.j_1AperMag3Err, las.kAperMag3, las.kAperMag3Err, las.hAperMag3, las.hAperMag3Err, las.pStar, dr5.petroRad_r
+FROM lasSource AS las, BestDR5..PhotoObj AS dr5, lasSourceXDR5PhotoObj AS x, lasMergeLog AS lm
+WHERE masterObjID=las.sourceID AND slaveObjID=dr5.ObjID AND x.distanceMins<0.016667 
+AND (las.ra > 105.0 AND las.ra < 225.0)
+AND las.pStar >= 0.0
+AND las.hApermag3 <=16.6
+AND las.frameSetID = lm.frameSetID AND j_1mfID > 0 AND hmfID > 0 AND kmfID > 0
+AND las.yAperMag3 > 0.0 AND las.j_1AperMag3 > 0.0 AND las.kAperMag3 > 0.0 AND las.hAperMag3 > 0.0
+AND ((dr5.modelMag_u-0.927) - (dr5.modelMag_g+0.103)) BETWEEN 1.386 AND 1.786
+AND ((dr5.modelMag_g+0.103) - (dr5.modelMag_r-0.146)) BETWEEN 1.907 AND 2.307
+AND ((dr5.modelMag_r-0.146) - (dr5.modelMag_i-0.366)) BETWEEN 0.707 AND 1.107
+AND ((dr5.modelMag_i-0.366) - (dr5.modelMag_z-0.533)) BETWEEN 0.373 AND 0.773
+AND (las.yAperMag3 - las.j_1AperMag3) BETWEEN 0.437 AND 0.837
+AND (las.j_1AperMag3 - las.hAperMag3) BETWEEN 0.615 AND 1.015
+AND (las.hAperMag3 - las.kAperMag3) BETWEEN 0.553 AND 0.953
+AND (dr5.psfMag_r - dr5.modelMag_r) BETWEEN 0.0 AND 0.3
+AND dr5.petroRad_r < 1.5
+
+
+
+
+
+
+
+
+
+
+z=0.45
+
+SELECT las.sourceID, las.ra, las.dec, dr5.objid, dr5.ra, dr5.dec, dr5.modelMag_u, dr5.modelMag_g, dr5.modelMag_r, dr5.psfMag_r, dr5.modelMag_i, dr5.modelMag_z, las.yAperMag3, las.yAperMag3Err, las.j_1AperMag3, las.j_1AperMag3Err, las.kAperMag3, las.kAperMag3Err, las.hAperMag3, las.hAperMag3Err, las.pStar, dr5.petroRad_r
+FROM lasSource AS las, BestDR5..PhotoObj AS dr5, lasSourceXDR5PhotoObj AS x, lasMergeLog AS lm
+WHERE masterObjID=las.sourceID AND slaveObjID=dr5.ObjID AND x.distanceMins<0.016667 
+AND (las.ra > 105.0 AND las.ra < 225.0)
+AND las.pStar >= 0.0
+AND las.hApermag3 <=16.8
+AND las.frameSetID = lm.frameSetID AND j_1mfID > 0 AND hmfID > 0 AND kmfID > 0
+AND las.yAperMag3 > 0.0 AND las.j_1AperMag3 > 0.0 AND las.kAperMag3 > 0.0 AND las.hAperMag3 > 0.0
+AND ((dr5.modelMag_u-0.927) - (dr5.modelMag_g+0.103)) BETWEEN 1.543 AND 1.943
+AND ((dr5.modelMag_g+0.103) - (dr5.modelMag_r-0.146)) BETWEEN 1.861 AND 2.261
+AND ((dr5.modelMag_r-0.146) - (dr5.modelMag_i-0.366)) BETWEEN 0.815 AND 1.215
+AND ((dr5.modelMag_i-0.366) - (dr5.modelMag_z-0.533)) BETWEEN 0.406 AND 0.806
+AND (las.yAperMag3 - las.j_1AperMag3) BETWEEN 0.458 AND 0.868
+AND (las.j_1AperMag3 - las.hAperMag3) BETWEEN 0.659 AND 1.059
+AND (las.hAperMag3 - las.kAperMag3) BETWEEN 0.529 AND 0.919
+AND (dr5.psfMag_r - dr5.modelMag_r) BETWEEN 0.0 AND 0.3
+AND dr5.petroRad_r < 1.5
+
+
+
+
+
+
+
+
+
+
+z=0.5
+
+SELECT las.sourceID, las.ra, las.dec, dr5.objid, dr5.ra, dr5.dec, dr5.modelMag_u, dr5.modelMag_g, dr5.modelMag_r, dr5.psfMag_r, dr5.modelMag_i, dr5.modelMag_z, las.yAperMag3, las.yAperMag3Err, las.j_1AperMag3, las.j_1AperMag3Err, las.kAperMag3, las.kAperMag3Err, las.hAperMag3, las.hAperMag3Err, las.pStar, dr5.petroRad_r
+FROM lasSource AS las, BestDR5..PhotoObj AS dr5, lasSourceXDR5PhotoObj AS x, lasMergeLog AS lm
+WHERE masterObjID=las.sourceID AND slaveObjID=dr5.ObjID AND x.distanceMins<0.016667 
+AND (las.ra > 105.0 AND las.ra < 225.0)
+AND las.pStar >= 0.0
+AND las.hApermag3 <=17.0
+AND las.frameSetID = lm.frameSetID AND j_1mfID > 0 AND hmfID > 0 AND kmfID > 0
+AND las.yAperMag3 > 0.0 AND las.j_1AperMag3 > 0.0 AND las.kAperMag3 > 0.0 AND las.hAperMag3 > 0.0
+AND ((dr5.modelMag_u-0.927) - (dr5.modelMag_g+0.103)) BETWEEN 1.80 AND 2.20
+AND ((dr5.modelMag_g+0.103) - (dr5.modelMag_r-0.146)) BETWEEN 1.82 AND 2.22
+AND ((dr5.modelMag_r-0.146) - (dr5.modelMag_i-0.366)) BETWEEN 0.94 AND 1.34
+AND ((dr5.modelMag_i-0.366) - (dr5.modelMag_z-0.533)) BETWEEN 0.43 AND 0.83
+AND (las.yAperMag3 - las.j_1AperMag3) BETWEEN 0.48 AND 0.88
+AND (las.j_1AperMag3 - las.hAperMag3) BETWEEN 0.70 AND 1.10
+AND (las.hAperMag3 - las.kAperMag3) BETWEEN 0.485 AND 0.885
+AND (dr5.psfMag_r - dr5.modelMag_r) BETWEEN 0.0 AND 0.3
+AND dr5.petroRad_r < 1.5
+
+
+
+
+
+
+
+
+
+
+z=0.55
+
+SELECT las.sourceID, las.ra, las.dec, dr5.objid, dr5.ra, dr5.dec, dr5.modelMag_u, dr5.modelMag_g, dr5.modelMag_r, dr5.psfMag_r, dr5.modelMag_i, dr5.modelMag_z, las.yAperMag3, las.yAperMag3Err, las.j_1AperMag3, las.j_1AperMag3Err, las.kAperMag3, las.kAperMag3Err, las.hAperMag3, las.hAperMag3Err, las.pStar, dr5.petroRad_r
+FROM lasSource AS las, BestDR5..PhotoObj AS dr5, lasSourceXDR5PhotoObj AS x, lasMergeLog AS lm
+WHERE masterObjID=las.sourceID AND slaveObjID=dr5.ObjID AND x.distanceMins<0.016667 
+AND (las.ra > 105.0 AND las.ra < 225.0)
+AND las.pStar >= 0.0
+AND las.hApermag3 <=17.2
+AND las.frameSetID = lm.frameSetID AND j_1mfID > 0 AND hmfID > 0 AND kmfID > 0
+AND las.yAperMag3 > 0.0 AND las.j_1AperMag3 > 0.0 AND las.kAperMag3 > 0.0 AND las.hAperMag3 > 0.0
+AND ((dr5.modelMag_u-0.927) - (dr5.modelMag_g+0.103)) BETWEEN 1.806 AND 2.206
+AND ((dr5.modelMag_g+0.103) - (dr5.modelMag_r-0.146)) BETWEEN 1.821 AND 2.221
+AND ((dr5.modelMag_r-0.146) - (dr5.modelMag_i-0.366)) BETWEEN 1.071 AND 1.471
+AND ((dr5.modelMag_i-0.366) - (dr5.modelMag_z-0.533)) BETWEEN 0.462 AND 0.862
+AND (las.yAperMag3 - las.j_1AperMag3) BETWEEN 0.483 AND 0.883
+AND (las.j_1AperMag3 - las.hAperMag3) BETWEEN 0.719 AND 1.119
+AND (las.hAperMag3 - las.kAperMag3) BETWEEN 0.472 AND 0.872
+AND (dr5.psfMag_r - dr5.modelMag_r) BETWEEN 0.0 AND 0.3
+AND dr5.petroRad_r < 1.5
+
+
+
+
+
+
+
+
+
+z=0.6
+
+SELECT las.sourceID, las.ra, las.dec, dr5.objid, dr5.ra, dr5.dec, dr5.modelMag_u, dr5.modelMag_g, dr5.modelMag_r, dr5.psfMag_r, dr5.modelMag_i, dr5.modelMag_z, las.yAperMag3, las.yAperMag3Err, las.j_1AperMag3, las.j_1AperMag3Err, las.kAperMag3, las.kAperMag3Err, las.hAperMag3, las.hAperMag3Err, las.pStar, dr5.petroRad_r
+FROM lasSource AS las, BestDR5..PhotoObj AS dr5, lasSourceXDR5PhotoObj AS x, lasMergeLog AS lm
+WHERE masterObjID=las.sourceID AND slaveObjID=dr5.ObjID AND x.distanceMins<0.016667 
+AND (las.ra > 105.0 AND las.ra < 225.0)
+AND las.pStar >= 0.0
+AND las.hApermag3 <=17.5
+AND las.frameSetID = lm.frameSetID AND j_1mfID > 0 AND hmfID > 0 AND kmfID > 0
+AND las.yAperMag3 > 0.0 AND las.j_1AperMag3 > 0.0 AND las.kAperMag3 > 0.0 AND las.hAperMag3 > 0.0
+AND ((dr5.modelMag_u-0.927) - (dr5.modelMag_g+0.103)) BETWEEN 1.795 AND 2.195
+AND ((dr5.modelMag_g+0.103) - (dr5.modelMag_r-0.146)) BETWEEN 1.810 AND 2.210
+AND ((dr5.modelMag_r-0.146) - (dr5.modelMag_i-0.366)) BETWEEN 1.196 AND 1.596
+AND ((dr5.modelMag_i-0.366) - (dr5.modelMag_z-0.533)) BETWEEN 0.480 AND 0.880
+AND (las.yAperMag3 - las.j_1AperMag3) BETWEEN 0.499 AND 0.899
+AND (las.j_1AperMag3 - las.hAperMag3) BETWEEN 0.721 AND 1.121
+AND (las.hAperMag3 - las.kAperMag3) BETWEEN 0.481 AND 0.881
+AND (dr5.psfMag_r - dr5.modelMag_r) BETWEEN 0.0 AND 0.3
+AND dr5.petroRad_r < 1.5
+
+
+
+
+
+
+
